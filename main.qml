@@ -3,14 +3,25 @@ import QtQuick.Window 2.2
 
 Window {
     visible: true
-    width: 640
-    height: 480
-    title: qsTr("Hello World")
 
-    MainForm {
+    MainForm{
+        id: main_form
+    }
+
+    Column {
+        id: column1
         anchors.fill: parent
-        mouseArea.onClicked: {
-            Qt.quit();
+    }
+
+    MouseArea {
+        property int click_count: 0
+        id: mouseArea1
+        anchors.fill: parent
+
+        onClicked: {
+            click_count++;
+            main_form.hello_text.text = click_count
         }
+
     }
 }
