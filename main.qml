@@ -8,11 +8,6 @@ Window {
         id: main_form
     }
 
-    Column {
-        id: column1
-        anchors.fill: parent
-    }
-
     MouseArea {
         property int click_count: 0
         id: mouseArea1
@@ -20,8 +15,16 @@ Window {
 
         onClicked: {
             click_count++;
-            main_form.hello_text.text = click_count
+            main_form.click_count_txt.text = click_count
         }
 
+        Keys.onEnterPressed: {
+            //event.accepted = true;
+            if (event.key == Qt.Key_Enter) {
+                event.accepted = true;
+                tab_count++
+                main_form.tap_count_txt.text = tap_count
+            }
+        }
     }
 }
