@@ -12,6 +12,29 @@ Window {
         property int tap_count: 0
         anchors.fill: parent
         focus: true
+
+        Keys.onPressed: {
+            switch(event.key){
+            case Qt.Key_Return:
+            case Qt.Key_Enter:
+                main_form.tap_count_txt.text = "Enter key"
+                console.log("Enter key")
+                break;
+            case Qt.Key_Left:
+                main_form.tap_count_txt.text = "Left key"
+                console.log("Left key")
+                break;
+            case Qt.Key_Right:
+                main_form.tap_count_txt.text = "Right key"
+                console.log("Right key")
+                break;
+            default:
+                console.log("??? key")
+            }
+
+//            event.accepted = true;
+        }
+
         Keys.onEnterPressed: {
             console.log("Enter key")
             tap_count++;
@@ -31,7 +54,6 @@ Window {
         property int click_count: 0
         id: mouseArea1
         anchors.fill: parent
-        focus:true
 
         onClicked: {
             click_count++;
